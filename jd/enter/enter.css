@@ -1,0 +1,180 @@
+ body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{
+    	margin:0px;
+    	padding:0px;
+    }
+    img{border:0;vertical-align:middle;}
+    a{text-decoration:none;color:#999999;}
+  .head{
+    width: 990px;
+    height: 80px;
+    margin: 0 auto;
+}
+.head .left{
+    width: 165px;
+    height: 80px;
+    background: url("../img/logo.png") no-repeat;
+    float: left;
+}
+.head .middle{
+    font-size: 24px;
+    line-height: 80px;
+    margin-left: 28px;
+    float: left;
+}
+.head .right{
+	margin-right:10px;
+	float:right;
+	margin-top:55px;
+}
+.head .right a{
+	font-size:12px;
+	margin-top:10px;
+	}
+	.head .right a:hover{
+    color: #E93854;
+}
+.center{
+	width:100%;
+	background-color:#E93854;
+}
+.center .big{
+	width:990px;
+	height:475px;
+	margin:0 auto;
+	 background: url("./img/big.jpg") no-repeat;
+}
+.center .big .form{
+	margin-top:40px;
+	width:345px;
+	height:360px;
+	float:right;
+	background-color:#FFFFFF;
+clear:both;
+}
+.center .big .form .top{
+border-bottom:1px solid #F4F4F4;
+height:54px;
+line-height:54px;
+font-size:20px;
+color:#F4F4F4;
+}
+.center .big .form .top a{
+width:170px;
+text-align:center;
+/*display: inline-block;*/
+margin:0 45px;
+color:#66667D;
+}
+.center .big .form .top  a:hover{
+    color: #E93854;
+}
+.center .big .form .user{
+	width:305px;
+	height:38px;
+	margin-left:20px;
+	margin-top:30px;
+}
+.center .big .form .user input{
+	width:265px;
+	height:37px;
+	border:1px solid #F4F4F4;
+	float:left;margin-top:10px;
+}
+.center .big .form .user img{
+margin-top:10px;
+    float:left;
+    clear:both;
+}
+.center .big .form .pwd{
+	width:305px;
+	height:38px;
+	margin-left:20px;
+	margin-top:20px;
+}
+.center .big .form .pwd input{
+	width:265px;
+	height:37px;
+	border:1px solid #F4F4F4;
+	float:left;margin-top:10px;
+}
+.center .big .form .pwd img{
+margin-top:10px;
+    float:left;
+    clear:both;
+}
+.center .big .form #err{
+	 width: 250px;
+    float: left;
+}
+.center .big .form .help{
+	width:150px;
+	height:44px;
+	margin-top:10px;
+	float:left;
+	margin-left:50px;
+}
+.center .big .form .help a{
+	
+	margin-left:20px;
+	margin-top:25px;
+	color:#666666;
+	font-size:12px;
+}
+.center .big .form .btn{
+	width:300px;
+	height:30px;
+	background-color:#E4393C;
+	color:#FFFFFF;
+	margin-left:20px;
+	border:1px solid #E4393C;
+	font-size:20px;
+	font-weight:bold;
+}
+.center .big .form .way{
+	width:320px;
+	height:50px;
+	font-size:11px;
+	color:#666666;
+	border-top:1px solid #F4F4F4;
+	margin-left:20px;
+	margin-top:25px;
+}
+.center .big .form .way .qq{
+	width:150px;
+	height:50px;
+	margin-top:16px;
+}
+.center .big .form .way .sign{
+	/*float:left;*/
+	width:150px;
+	height:50px;
+	margin-top:-54px;
+	margin-left:222px;
+
+}
+.center .big .form .way .sign a{
+	color:#E4393C;
+	font-size:15px;
+}
+.bottom .bottom_x{
+	width:100%;
+	height:125px;
+	margin:0 auto;
+	text-align:center;
+	margin-top:25px;
+	font-size:12px;
+
+}
+.bottom .bottom_x a{
+	font-size:13px;
+	margin:0 14px;
+	color:#666666;
+	}
+	.bottom .bottom_x p{
+	font-size:11px;
+	margin-top:20px;
+	color:#666666;
+	}
+	.claer{
+		clear:both;
+	}
