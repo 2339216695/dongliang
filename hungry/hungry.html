@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>饿了吗</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-app="myapp">
+<!--上下导航-->
+<!--<div >-->
+<div class="navbar navbar-default navbar-fixed-top navdh" role="navigation">
+  <div class="container-fluid" >
+      <div class="navbar-header">
+        <a class="navbar-brand">开饭啦</a>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbara-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbara-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="#/main">首页</a></li>
+          <li><a href="#/allmenu">菜单</a></li>
+          <li><a href="#/myorder">我的订单</a></li>
+        </ul>
+      </div>
+  </div>
+</div>
+  <div ng-view style="padding-bottom:60px;"></div>
+  <!--主页面-->
+
+  <!--底部工具栏-->
+  <div class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+      <ul class="nav navbar-nav">
+        <li class="col-xs-4"><a href="#/main" class="glyphicon glyphicon-home"></a></li>
+        <li class="col-xs-4"><a href="#/myorder" class="glyphicon glyphicon-user"></a></li>
+        <li class="col-xs-4"><a href="#/allmenu" class="glyphicon glyphicon-th-list"></a></li>
+
+      </ul>
+    </div>
+  </div>
+</body>
+<script src="./JS/angular.js"></script>
+<script src="./JS/angular-route.js"></script>
+<script src="./JS/jquery-1.11.3.js"></script>
+<script src="./JS/bootstrap.js"></script>
+<script src="./JS/angular-animate.js"></script>
+<script type="text/javascript">
+var num=0;
+var num1;
+var module=angular.module('myapp',['ng','ngRoute']);
+  module.controller('mycolenter',['$scope','$location','$http',function($scope,$location) {
+    $scope.enter=function(){
+      var path_url="allmenu";
+      $location.path(path_url);
+    }
+  }]).controller("mycolmenu",["$scope","$location","$http",function($scope,$location,$http){
+//    主页菜单的显示
+    var data_type=1;
+    $scope.datas=[];
+//    初始主页菜单
+    $http.get("./php/dishes.php?data_type="+data_type).success(function(data){
+      $scope.datas=$scope.datas.concat(data);
+      if(data.length==5){
+        $scope.is_show=true;
+      }else{
+        $scope.is_show=false;
+      }
+      for(var i=0;i<$scope.datas.length;i++){
+        $scope.datas[i].img="img/"+$scope.datas[i][0];
+        $scope.datas[i].dish_name=$scope.datas[i][1];
+        $scope.datas[i].food=$scope.datas[i][2];
+        $scope.datas[i].price=$scope.datas[i][3];
+      }
+    })
+//    点击更多的主页菜单
+    $scope.more_dishes=function(){
+      data_type++;
+      $http.get("./php/dishes.php?data_type="+data_type).success(function(data){
+        $scope.datas=$scope.datas.concat(data);
+        if(data.length==5){
+          $scope.is_show=true;
+        }else{
+          $scope.is_show=false;
+        }
+        for(var i=0;i<$scope.datas.length;i++){
+          $scope.datas[i]. img="img/"+$scope.datas[i][0];
+          $scope.datas[i]. dish_name=$scope.datas[i][1];
+          $scope.datas[i]. food=$scope.datas[i][2];
+          $scope.datas[i]. price=$scope.datas[i][3];
+        }
+      })
+    }
+//   点击进入菜单详情的界面操作
+    $scope.detail=function(){
+      console.log(this.data[1]);
+      data_name=this.data[1];
+    }
+  }]).controller("mycoldown",["$scope","$location","$http",function($scope,$location,$http){
+    if(data_name!=""){
+      $http.get("./php/detail.php?data_name="+data_name).success(function(data){
+        $scope.dish_name=data[0][0];
+        $scope.img="img/"+data[0][1];
+        $scope.food=data[0][2];
+        $scope.info=data[0][3];
+      })
+    }
+  //下单填写表单
+  }]).controller("mycolsure",["$scope","$location","$http",function($scope,$location,$http){
+    $scope.is_show=true;
+    $scope.enter_order=function(){
+      if(($scope.user!=null)&&($scope.sex!=null)&&($scope.tel!=null)&&($scope.addr!=null)){
+        var datas={
+          user:$scope.user,
+          sex:$scope.sex,
+          tel:$scope.tel,
+          addr:$scope.addr,
+          dish:data_name,
+        }
+        $http({
+          method:"post",
+          url:"./php/sure2.php",
+          data:datas,
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          transformRequest: function(obj) {
+            var str = [];
+            for(var p in obj){
+              str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+            }
+            return str.join("&");
+          }
+        }).success(function(data){
+          $scope.is_show=false;
+          $scope.order_num=data;
+        })
+      }
+    }
+}]) .controller('mycolorder',['$scope','$location','$http',function($scope,$location,$http) {
+//    我的订单
+    $scope.datas=[];
+    var del=0;
+    $http.get("./php/order.php?del="+del).success(function(data){
+      $scope.datas = $scope.datas.concat(data);
+      for(var k=0;k<data.length;k++) {
+        $scope.datas[k].oid = $scope.datas[k][3];
+        $scope.datas[k].img_sm = "img/" + $scope.datas[k][1];
+        $scope.datas[k].order_time = $scope.datas[k][2];
+        $scope.datas[k].user_name = $scope.datas[k][0];
+        $scope.delmenu = function (btn) {
+          del = btn.data.oid;
+          $http.get("./php/order.php?del=" + del).success(function (data) {
+            $scope.datas = data.reverse();
+          })
+        }
+      }
+      })
+    }])
+//    词典
+    .config(function($routeProvider){
+    $routeProvider.when("/",{
+      templateUrl:"childs/main.html",
+    }).when("/main",{
+      templateUrl:"childs/main.html",
+    }).when("/allmenu",{
+      templateUrl:"childs/allmenu.html",
+    }).when("/myorder",{
+      templateUrl:"childs/myorder.html",
+    }).when("/downorder",{
+      templateUrl:"childs/downorder.html",
+    })
+      .when("/sure",{
+      templateUrl:"childs/sure.html",
+    }).when("/success",{
+      templateUrl:"childs/success.html",
+    })
+  })
+</script>
+</html>

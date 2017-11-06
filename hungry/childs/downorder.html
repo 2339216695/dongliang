@@ -1,0 +1,27 @@
+<div class="container downorder" ng-controller="mycoldown" >
+    <ul class="nav nav-pills">
+      <li role="presentation"><a href="#/hungry">首页</a></li>
+      <li><a href="#">/</a></li>
+      <li role="presentation" class="active">详情</li>
+    </ul>
+    <div class="detail_all_info">
+      <div class="detail_info">
+        <h2>{{dish_name}}</h2>
+        <img ng-src="{{img}}">
+        <div>
+          <div class="detail_center">
+            <p><strong>主要原料：</strong>{{food}}</p>
+            <span>{{info}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="detail_bottom">
+        <div class="pull-right">
+          <a class="btn btn-success" href="#/sure">我要订餐</a>
+          <a class="btn btn-warning" href="#/allmenu">我再看看</a>
+        </div>
+      </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,89 @@
+/*导航*/
+.navdh{
+  z-index: 100;
+}
+.navbuttons{
+  z-index: 100;
+}
+/*<!--主页面-->*/
+.first{
+  z-index: 1000;
+  width:100%;
+  height:660px;
+  position:absolute;
+  background: white;
+}
+.first h1{
+  color:deepskyblue;
+  font-size:8em;
+}
+.first img{
+  width:100%;
+  margin:0;
+  padding:0;
+}
+/*菜单*/
+.main_1{
+  z-index: 20;
+}
+.main_1 dl{
+  margin-top: 10px;
+}
+.main_1 .media{
+  border:1px solid #F5F5F5;
+}
+.main_1 .media img{
+  margin-left:10px;
+}
+.main_1 .media p{
+  border-bottom:1px solid #F5F5F5;
+}
+.main_1 button{
+  margin-top:30px;
+}
+.main_1 .media-body span{
+  color:red;
+}
+.order{
+  border:1px solid #F5F5F5;
+}
+.allmenu{
+  margin-top:70px;
+}
+.menu{
+  margin-top:70px;
+  border-radius: 10px;
+}
+a{
+  color:black;
+}
+a:hover{
+  text-decoration: none;
+  color:#337AB7;
+}
+a:active{
+  color:#337AB7;
+}
+.order {
+  margin-top: 70px;
+}
+/*菜单详情*/
+.downorder{
+  margin-top:70px;
+}
+/*底部导航*/
+.navbar-fixed-bottom ul{
+  width:100%;
+  text-align: center;
+}
+.navbar-fixed-bottom .navbar-nav>li{
+  float: left;
+}
+.navbar-fixed-bottom .navbar-nav a{
+  padding:10px 0;
+  max-width:60px;
+  margin: 0 auto;
+}
+.navbar-fixed-bottom .navbar-nav {
+  margin: 5px 0 0 0;
+}
